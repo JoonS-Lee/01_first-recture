@@ -3,387 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>엔지니어 포트폴리오 랜딩 페이지</title>
-    <!-- 나눔고딕 폰트 적용 -->
+    <title>이준승 (JoonS-Lee) - 엔지니어 포트폴리오</title>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* --- [ CSS Variables & Reset ] --- */
         :root {
             --royal-blue: #4169E1;
             --dark-blue: #00008B;
             --white: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --text-dark: #333333;
-            --text-light: #666666;
+            --light-gray: #F5F7FA;
+            --text-main: #333333;
+            --text-muted: #666666;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Nanum Gothic', sans-serif;
-        }
-
-        body {
-            background-color: var(--white);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* --- [ Navigation (책갈피 기능) ] --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--dark-blue);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 700;
-            transition: color 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--royal-blue);
-        }
-
-        /* --- [ Common Section Styles ] --- */
-        section {
-            padding: 100px 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--dark-blue);
-            margin-bottom: 50px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 4px;
-            background-color: var(--royal-blue);
-        }
-
-        /* 강조 텍스트 (색상 표기) */
-        .highlight {
-            color: var(--royal-blue);
-            font-weight: 800;
-        }
-
-        /* --- [ Hero Section ] --- */
-        #home {
-            background: linear-gradient(135deg, var(--light-gray) 0%, var(--white) 100%);
-            text-align: center;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .hero-content h1 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--dark-blue);
-        }
-
-        .hero-content p {
-            font-size: 20px;
-            color: var(--text-light);
-            margin-bottom: 40px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 15px 40px;
-            background-color: var(--royal-blue);
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--dark-blue);
-            transform: translateY(-2px);
-        }
-
-        /* --- [ About Section ] --- */
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .about-content p {
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        /* --- [ Projects Section ] --- */
-        #projects {
-            background-color: var(--light-gray);
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .project-card {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            border-top: 5px solid var(--royal-blue);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-card h3 {
-            font-size: 24px;
-            color: var(--dark-blue);
-            margin-bottom: 15px;
-        }
-
-        .project-card p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-
-        .github-link {
-            color: var(--royal-blue);
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .github-link:hover {
-            color: var(--dark-blue);
-            text-decoration: underline;
-        }
-
-        /* --- [ Contact Section ] --- */
-        .contact-info {
-            text-align: center;
-            font-size: 20px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Nanum Gothic', sans-serif; color: var(--text-main); background-color: var(--white); line-height: 1.6; scroll-behavior: smooth; }
         
-        .contact-info a {
-            color: var(--royal-blue);
-            text-decoration: none;
-            font-weight: 700;
-        }
+        /* Typography */
+        h1, h2, h3 { color: var(--dark-blue); }
+        .highlight-royal { color: var(--royal-blue); font-weight: 800; }
+        .highlight-dark { color: var(--dark-blue); font-weight: 800; }
 
-        /* --- [ Animation Classes (JS 연동) ] --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
+        /* Navigation (책갈피) */
+        header { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--dark-blue); text-decoration: none; }
+        .nav-links { list-style: none; display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 700; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--royal-blue); }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Sections */
+        section { padding: 6rem 2rem 4rem; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .section-inner { max-width: 1200px; width: 100%; }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 3rem; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: var(--royal-blue); margin: 0.5rem auto 0; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* 모바일에서는 심플하게 숨김 처리 */
-            .hero-content h1 { font-size: 36px; }
-        }
+        /* Backgrounds */
+        .bg-white { background-color: var(--white); }
+        .bg-light { background-color: var(--light-gray); }
+
+        /* Hero Section */
+        #home { text-align: center; }
+        .hero-title { font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.3; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+        .btn { display: inline-block; padding: 1rem 2.5rem; background: var(--royal-blue); color: var(--white); text-decoration: none; font-weight: 700; border-radius: 5px; transition: all 0.3s; }
+        .btn:hover { background: var(--dark-blue); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(65, 105, 225, 0.2); }
+
+        /* Projects Section */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: var(--white); padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--royal-blue); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .card p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .github-link { color: var(--royal-blue); font-weight: 700; text-decoration: none; }
+        .github-link:hover { text-decoration: underline; }
+
+        /* Footer */
+        footer { background: var(--dark-blue); color: var(--white); text-align: center; padding: 2rem; }
+        
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
     <header>
         <nav>
-            <a href="#home" class="logo">MyPortfolio.</a>
+            <a href="#home" class="logo">JoonS-Lee</a>
             <ul class="nav-links">
-                <li><a href="#home" class="nav-item active">Home</a></li>
-                <li><a href="#about" class="nav-item">About</a></li>
-                <li><a href="#projects" class="nav-item">Projects</a></li>
-                <li><a href="#contact" class="nav-item">Contact</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Home Section -->
-    <section id="home">
-        <div class="hero-content fade-in">
-            <h1>혁신을 주도하는 <span class="highlight">시스템 엔지니어</span></h1>
-            <p>안전하고 효율적인 기술로 더 나은 내일을 설계합니다.</p>
-            <a href="#about" class="btn-primary">자세히 보기</a>
+    <section id="home" class="bg-light">
+        <div class="section-inner text-center fade-in">
+            <h1 class="hero-title">대한민국 최고의 서비스를 향한<br><span class="highlight-royal">시스템 엔지니어</span></h1>
+            <p class="hero-subtitle">안정적인 시스템 구축과 혁신적인 문제 해결로 새로운 가치를 창출합니다.</p>
+            <a href="https://github.com/JoonS-Lee" target="_blank" class="btn">GitHub 방문하기</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title fade-in">About Me</h2>
-        <div class="about-content fade-in">
-            <p>안녕하세요. 저는 <span class="highlight">전기 지게차 보행자 감지 시스템</span> 개발과 <span class="highlight">HILS 시스템 구축</span> 등의 복잡한 엔지니어링 문제를 해결해 온 전문가입니다.</p>
-            <p>또한 폐배터리 관련 시장 조사와 기술 동향 분석을 통해 미래 산업의 방향성을 지속적으로 탐구하고 있습니다. 체계적인 분석력과 탄탄한 기술력을 바탕으로, 사용자와 비즈니스 모두에 실질적인 가치를 제공하는 솔루션을 개발합니다.</p>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title fade-in">Key Projects</h2>
-        <div class="project-grid">
-            <!-- Project 1 -->
-            <div class="project-card fade-in">
-                <h3>지게차 보행자 감지 시스템</h3>
-                <p>전기 지게차 환경에서 딥러닝 기반 비전 기술을 활용하여 작업자의 안전을 확보하는 실시간 감지 알고리즘 및 시스템 구축.</p>
-                <a href="https://github.com/YourUsername/project1" target="_blank" class="github-link">GitHub에서 보기 &rarr;</a>
-            </div>
-            
-            <!-- Project 2 -->
-            <div class="project-card fade-in">
-                <h3>HILS 시스템 아키텍처</h3>
-                <p>Hardware-in-the-Loop Simulation을 위한 제어기 검증 환경을 설계하고, 신뢰성 높은 테스트 자동화 스크립트 개발.</p>
-                <a href="https://github.com/YourUsername/project2" target="_blank" class="github-link">GitHub에서 보기 &rarr;</a>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card fade-in">
-                <h3>폐배터리 리사이클링 데이터 분석</h3>
-                <p>시장 동향 파악을 위한 글로벌 폐배터리 재활용 데이터 수집 파이프라인 구축 및 데이터 시각화 대시보드 제작.</p>
-                <a href="https://github.com/YourUsername/project3" target="_blank" class="github-link">GitHub에서 보기 &rarr;</a>
+    <section id="about" class="bg-white">
+        <div class="section-inner fade-in">
+            <h2 class="section-title">About Me</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem;">
+                <p style="margin-bottom: 1rem;">안녕하세요. 저는 <span class="highlight-dark">전기 지게차 보행자 감지 시스템</span> 및 <span class="highlight-dark">HILS 시스템 구축</span> 등의 복잡한 엔지니어링 문제를 해결해 온 전문가입니다.</p>
+                <p>로열 블루와 다크 블루의 조화처럼, <span class="highlight-royal">냉철한 분석력</span>과 <span class="highlight-royal">창의적인 추진력</span>을 바탕으로 프로젝트를 이끌어갑니다. 대한민국 최대 규모의 서비스를 목표로, 사용자와 비즈니스 모두에 실질적인 가치를 제공하는 솔루션을 개발하는 것이 저의 비전입니다.</p>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title fade-in">Contact</h2>
-        <div class="contact-info fade-in">
-            <p>새로운 프로젝트나 협업에 대한 논의는 언제든 환영합니다.</p>
-            <br>
-            <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <p>GitHub: <a href="https://github.com/YourUsername" target="_blank">github.com/YourUsername</a></p>
+    <section id="projects" class="bg-light">
+        <div class="section-inner">
+            <h2 class="section-title fade-in">GitHub Projects</h2>
+            <div class="grid">
+                <div class="card fade-in">
+                    <h3>보행자 감지 알고리즘</h3>
+                    <p>전기 지게차 환경에서 딥러닝 기반 비전 기술을 활용하여 작업자의 안전을 확보하는 실시간 감지 알고리즘 연구 및 개발 내역입니다.</p>
+                    <a href="https://github.com/JoonS-Lee" target="_blank" class="github-link">자세히 보기 &rarr;</a>
+                </div>
+                <div class="card fade-in">
+                    <h3>HILS 검증 환경 설계</h3>
+                    <p>Hardware-in-the-Loop Simulation을 위한 제어기 검증 환경 아키텍처 및 테스트 자동화 스크립트 구축 프로젝트입니다.</p>
+                    <a href="https://github.com/JoonS-Lee" target="_blank" class="github-link">자세히 보기 &rarr;</a>
+                </div>
+                <div class="card fade-in">
+                    <h3>데이터 분석 및 시각화</h3>
+                    <p>폐배터리 리사이클링 등 시장 동향 파악을 위한 데이터 수집 파이프라인 및 시각화 대시보드 관련 프로젝트입니다.</p>
+                    <a href="https://github.com/JoonS-Lee" target="_blank" class="github-link">자세히 보기 &rarr;</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- JavaScript (동적 효과 및 스크롤 책갈피) -->
+    <section id="contact" class="bg-white">
+        <div class="section-inner fade-in" style="text-align: center;">
+            <h2 class="section-title">Contact</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">새로운 프로젝트와 협업에 대한 논의는 언제든 환영합니다.</p>
+            <p style="font-size: 1.2rem;"><strong>GitHub:</strong> <a href="https://github.com/JoonS-Lee" target="_blank" class="highlight-royal" style="text-decoration: none;">github.com/JoonS-Lee</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 JoonS-Lee. All rights reserved.</p>
+    </footer>
+
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            // 1. 부드러운 스크롤 (책갈피 기능)
-            const navLinks = document.querySelectorAll('.nav-links a, .btn-primary');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetSection = document.getElementById(targetId);
-                    
-                    window.scrollTo({
-                        top: targetSection.offsetTop,
-                        behavior: 'smooth'
-                    });
+        document.addEventListener("DOMContentLoaded", () => {
+            // Scroll Animation (Fade In)
+            const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
                 });
-            });
+            }, observerOptions);
 
-            // 2. 스크롤 스파이 (현재 위치에 따라 메뉴 색상 변경)
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // Navigation Active State Update
             const sections = document.querySelectorAll('section');
-            const navItems = document.querySelectorAll('.nav-item');
+            const navLinks = document.querySelectorAll('.nav-links a');
 
             window.addEventListener('scroll', () => {
                 let current = '';
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    // 스크롤 위치가 섹션 내부에 있을 때
-                    if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    if (pageYOffset >= sectionTop - 150) {
                         current = section.getAttribute('id');
                     }
                 });
 
-                navItems.forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href').substring(1) === current) {
-                        item.classList.add('active');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
                     }
                 });
-            });
-
-            // 3. 스크롤 페이드인 애니메이션 (Intersection Observer)
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const appearOptions = {
-                threshold: 0.15, // 요소가 15% 보일 때 실행
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // 한 번 보이면 관찰 중지
-                    }
-                });
-            }, appearOptions);
-
-            fadeElements.forEach(el => {
-                appearOnScroll.observe(el);
             });
         });
     </script>
