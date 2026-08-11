@@ -111,6 +111,10 @@
       border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.065);
       border-radius:30px;padding:30px;box-shadow:0 30px 90px rgba(0,0,0,.18);backdrop-filter:blur(12px)
     }
+
+    .avatar-photo{overflow:hidden;padding:0;background:#fff}
+    .avatar-photo img{width:100%;height:100%;display:block;object-fit:cover}
+
     .profile-head{display:flex;align-items:center;gap:17px;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.11)}
     .avatar{
       width:66px;height:66px;border-radius:18px;background:linear-gradient(135deg,#315BEA,#7C98FF);
@@ -133,6 +137,11 @@
     h2{font-size:clamp(32px,4vw,50px);line-height:1.2;letter-spacing:-.055em;margin:10px 0 0}
     .section-intro{max-width:490px;color:var(--muted);font-size:14px}
     .dark .section-intro{color:#AEBBD3}
+
+
+    .about-profile{display:flex;align-items:center;gap:16px;margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+    .about-profile img{width:68px;height:68px;border-radius:18px;object-fit:cover;border:1px solid var(--line)}
+    .about-profile h3{margin:3px 0 0;font-size:18px}
 
     .story{display:grid;grid-template-columns:1fr 1fr;gap:24px}
     .card{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:#fff;box-shadow:0 10px 35px rgba(7,21,47,.045)}
@@ -286,7 +295,7 @@
           <div class="eyebrow"><span class="dot"></span> DEVELOPER · BUILDER · PROBLEM SOLVER</div>
           <h1>기술을 넘어<br><em>서비스의 가치</em>를 만듭니다.</h1>
           <p class="hero-copy">
-            <strong>JoonS-Lee · Good-Joon</strong> — 현장의 문제를 기술로 구조화하고,
+            <strong>이준섭 · Good-Joon</strong> — 현장의 문제를 기술로 구조화하고,
             제품과 서비스로 연결하는 개발자입니다. 복잡한 요구사항을 단순하게 만들고,
             실제 사용자가 체감하는 결과까지 완성하는 것을 중요하게 생각합니다.
           </p>
@@ -298,10 +307,12 @@
 
         <div class="hero-card float reveal">
           <div class="profile-head">
-            <div class="avatar">GJ</div>
+            <div class="avatar avatar-photo">
+              <img src="https://github.com/JoonS-Lee.png?size=160" alt="이준섭 GitHub 프로필 이미지">
+            </div>
             <div>
               <h3>Good-Joon</h3>
-              <p>JoonS-Lee · Developer</p>
+              <p>이준섭 · Developer</p>
             </div>
           </div>
           <div class="facts">
@@ -338,6 +349,13 @@
             </p>
           </article>
           <article class="card reveal">
+            <div class="about-profile">
+              <img src="https://github.com/JoonS-Lee.png?size=320" alt="이준섭 GitHub 프로필 이미지">
+              <div>
+                <div class="kicker">Developer Profile</div>
+                <h3>이준섭 · Good-Joon</h3>
+              </div>
+            </div>
             <h3>제가 중요하게 생각하는 것</h3>
             <p>
               복잡한 문제를 명확하게 정의하는 것, 기술적 완성도와 사용성을 함께 보는 것,
@@ -534,8 +552,8 @@
 
         <div class="github reveal">
           <div>
-            <h3>JoonS-Lee / Good-Joon</h3>
-            <p>GitHub · Korea · Developer</p>
+            <h3>이준섭 · Good-Joon</h3>
+            <p>GitHub · Korea · 이준섭 / Developer</p>
             <div class="repo">
               <div class="repo-title">01_first-recture</div>
               <div class="repo-desc">Public · HTML · 20260811 첫번째 교육</div>
@@ -594,7 +612,7 @@
 
   <footer>
     <div class="container footer-inner">
-      <div>© <span id="year"></span> JoonS-Lee · Good-Joon. All rights reserved.</div>
+      <div>© <span id="year"></span> 이준섭 · Good-Joon. All rights reserved.</div>
       <div>Designed as a single-page developer profile.</div>
     </div>
   </footer>
