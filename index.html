@@ -144,6 +144,38 @@
     .card:first-child .highlight{color:#9BB0FF}
     .quote{font-size:26px!important;line-height:1.45!important;letter-spacing:-.04em;color:#fff!important;font-weight:800}
 
+
+    .career-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .career-card{border:1px solid var(--line);border-radius:22px;padding:28px;background:#fff;transition:.3s;position:relative;overflow:hidden}
+    .career-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .career-current{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .career-badge{display:inline-block;padding:5px 8px;border-radius:6px;background:#EAF0FF;color:var(--royal);font-size:9px;font-weight:800;letter-spacing:.08em}
+    .career-current .career-badge{background:rgba(95,127,240,.18);color:#AFC0FF}
+    .career-period{margin-top:18px;font-size:11px;font-weight:800;color:var(--royal)}
+    .career-current .career-period{color:#AFC0FF}
+    .career-card h3{font-size:20px;letter-spacing:-.04em;margin:7px 0 10px}
+    .career-card p{margin:0;color:var(--muted);font-size:13px}
+    .career-current p{color:#B9C6DD}
+    .career-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+    .career-tags span{font-size:10px;padding:5px 8px;border-radius:7px;background:var(--soft);color:#53617A;font-weight:700}
+    .career-current .career-tags span{background:rgba(255,255,255,.08);color:#D4DDF0}
+    .experience-bars{margin:22px 0 12px}
+    .experience-bars div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:13px}
+    .experience-bars strong{color:var(--royal)}
+    .small-note{font-size:11px!important;color:#8792A5!important}
+    .career-lower{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+    .info-card{border:1px solid var(--line);border-radius:22px;padding:26px;background:var(--soft)}
+    .info-card h3{font-size:18px;margin:0 0 18px}
+    .credential{display:flex;flex-wrap:wrap;gap:7px}
+    .credential span,.credential strong{font-size:11px;padding:7px 9px;border-radius:7px;background:#fff;border:1px solid var(--line)}
+    .credential strong{color:var(--royal)}
+    .credential-no{margin-top:12px;font-size:11px;color:var(--muted)}
+    .award{display:grid;grid-template-columns:82px 110px 1fr;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:11px}
+    .award:last-child{border-bottom:0}
+    .award b{color:var(--royal)}
+    .award span{font-weight:800}
+    .award small{color:var(--muted)}
+
     .capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .cap{padding:28px;border-radius:20px;background:#fff;border:1px solid var(--line);transition:.3s}
     .cap:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#C5D2F2}
@@ -197,7 +229,7 @@
 
     @media(max-width:900px){
       .nav-links{display:none}
-      .hero-grid,.story,.project{grid-template-columns:1fr}
+      .hero-grid,.story,.project,.career-grid,.career-lower{grid-template-columns:1fr}
       .hero{padding-top:110px}
       .capabilities{grid-template-columns:1fr 1fr}
       .section-head{display:block}
@@ -228,7 +260,7 @@
       <a class="brand" href="#home">JOON<span>S</span>·LEE</a>
       <nav class="nav-links" aria-label="주요 메뉴">
         <a href="#about">ABOUT</a>
-        <a href="#capability">CAPABILITY</a>
+        <a href="#career">CAREER</a><a href="#capability">CAPABILITY</a>
         <a href="#work">WORK</a>
         <a href="#github">GITHUB</a>
         <a href="#contact">CONTACT</a>
@@ -240,10 +272,11 @@
   <aside class="bookmark" aria-label="페이지 책갈피">
     <a href="#home" data-label="INTRO">01</a>
     <a href="#about" data-label="ABOUT">02</a>
-    <a href="#capability" data-label="CAPABILITY">03</a>
-    <a href="#work" data-label="WORK">04</a>
-    <a href="#github" data-label="GITHUB">05</a>
-    <a href="#contact" data-label="CONTACT">06</a>
+    <a href="#career" data-label="CAREER">03</a>
+    <a href="#capability" data-label="CAPABILITY">04</a>
+    <a href="#work" data-label="WORK">05</a>
+    <a href="#github" data-label="GITHUB">06</a>
+    <a href="#contact" data-label="CONTACT">07</a>
   </aside>
 
   <main>
@@ -273,9 +306,9 @@
           </div>
           <div class="facts">
             <div class="fact"><small>BASE</small><strong>Korea 🇰🇷</strong></div>
-            <div class="fact"><small>ROLE</small><strong>Developer</strong></div>
+            <div class="fact"><small>ROLE</small><strong>Developer · 전장설계</strong></div>
             <div class="fact"><small>GITHUB</small><strong>JoonS-Lee</strong></div>
-            <div class="fact"><small>FOCUS</small><strong>Technology × Service</strong></div>
+            <div class="fact"><small>FOCUS</small><strong>산업차량 전장 · 안전 · 서비스</strong></div>
           </div>
         </div>
       </div>
@@ -310,9 +343,97 @@
               복잡한 문제를 명확하게 정의하는 것, 기술적 완성도와 사용성을 함께 보는 것,
               그리고 한 번 만든 결과물을 지속적으로 개선하는 것입니다.
               <br><br>
-              특히 <span class="highlight">실제 산업 현장에서 작동하는 기술</span>과
-              제품화 가능한 아이디어에 관심을 두고 있습니다.
+              특히 <span class="highlight">실제 산업 현장에서 작동하는 전장 기술</span>과
+              제품화 가능한 아이디어, 안전과 신뢰성을 높이는 시스템에 관심을 두고 있습니다.
             </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="career">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">02 · Career</div>
+            <h2>설계의 깊이와<br>현장 경험을 쌓아왔습니다.</h2>
+          </div>
+          <p class="section-intro">
+            2012년부터 설계 분야의 실무를 이어오며 해양설계에서 산업차량 전장설계까지
+            서로 다른 산업의 경험을 연결해 왔습니다.
+          </p>
+        </div>
+
+        <div class="career-grid">
+          <article class="career-card career-current reveal">
+            <div class="career-badge">CURRENT ROLE</div>
+            <div class="career-period">2021.01 — NOW</div>
+            <h3>설계기술직 · 산업차량 전장설계</h3>
+            <p>
+              산업차량의 전장 시스템을 설계하고, 전동화·안전·센서·카메라·제어 등
+              다양한 기술 요소를 제품 관점에서 연결합니다.
+            </p>
+            <div class="career-tags">
+              <span>산업차량설계</span><span>전장설계</span><span>안전</span><span>시스템</span>
+            </div>
+          </article>
+
+          <article class="career-card reveal">
+            <div class="career-badge">PREVIOUS</div>
+            <div class="career-period">2016.02 — 2020</div>
+            <h3>해양설계 · 해양전장 / 해양동선설계</h3>
+            <p>
+              사무기술직으로 해양설계 업무를 수행하며 해양전장설계와 해양동선설계,
+              직무 OJT 등 다양한 설계 경험을 쌓았습니다.
+            </p>
+            <div class="career-tags">
+              <span>해양전장설계</span><span>해양동선설계</span><span>프로세스</span>
+            </div>
+          </article>
+
+          <article class="career-card reveal">
+            <div class="career-badge">FOUNDATION</div>
+            <div class="career-period">2012.01 — 2016.01</div>
+            <h3>대우조선해양 · 대리 · 전장설계</h3>
+            <p>
+              대우조선해양에서 전장설계 실무를 수행하며 산업 현장 설계의 기본기와
+              프로젝트 기반 업무 경험을 축적했습니다.
+            </p>
+            <div class="career-tags">
+              <span>대우조선해양</span><span>전장설계</span><span>설계실무</span>
+            </div>
+          </article>
+
+          <article class="career-card reveal">
+            <div class="career-badge">MULTI-DISCIPLINE</div>
+            <div class="career-period">복수직무경험 기준</div>
+            <h3>산업차량설계 + 해양설계</h3>
+            <div class="experience-bars">
+              <div><span>산업차량설계</span><strong>5.1년</strong></div>
+              <div><span>해양설계(프로세스)</span><strong>4.7년</strong></div>
+            </div>
+            <p class="small-note">제공해주신 경력 화면에 표시된 주요 직무 경험입니다.</p>
+          </article>
+        </div>
+
+        <div class="career-lower">
+          <article class="info-card reveal">
+            <h3>자격면허</h3>
+            <div class="credential">
+              <strong>IECEx CoPC</strong>
+              <span>방폭자격증 · 자격</span>
+              <span>취득 2018.09.12</span>
+              <span>ExCB</span>
+            </div>
+            <div class="credential-no">IECEx CP TRNR18.0086</div>
+          </article>
+
+          <article class="info-card reveal">
+            <h3>포상내역</h3>
+            <div class="award"><b>2025.12.03</b><span>우수지원상</span><small>25년 하반기 우수지원상</small></div>
+            <div class="award"><b>2020.01.20</b><span>장려</span><small>아이디어 공모전 포상</small></div>
+            <div class="award"><b>2019.07.15</b><span>차세대 우수인재상</span><small>2019년 상반기 차세대 우수인재</small></div>
           </article>
         </div>
       </div>
@@ -322,7 +443,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="kicker">02 · Capability</div>
+            <div class="kicker">03 · Capability</div>
             <h2>기술을 연결하고<br>서비스로 완성합니다.</h2>
           </div>
           <p class="section-intro">하나의 기술보다 전체 시스템의 흐름을 봅니다.</p>
@@ -367,7 +488,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="kicker">03 · Work</div>
+            <div class="kicker">04 · Work</div>
             <h2>현장에서 필요한 기술을<br>서비스의 언어로 바꿉니다.</h2>
           </div>
           <p class="section-intro">제품 개발과 기술 검증, 안전·서비스 체계까지 연결하는 관점.</p>
@@ -402,7 +523,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="kicker">04 · GitHub</div>
+            <div class="kicker">05 · GitHub</div>
             <h2>코드로 남기는<br>개발의 기록.</h2>
           </div>
           <p class="section-intro">
@@ -429,7 +550,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div>
-            <div class="kicker">05 · Journey</div>
+            <div class="kicker">06 · Journey</div>
             <h2>배우고, 만들고,<br>다시 개선합니다.</h2>
           </div>
           <p class="section-intro">공개된 자료와 현재의 개발 방향을 바탕으로 정리한 성장의 프레임입니다.</p>
@@ -460,7 +581,7 @@
 
     <section class="cta" id="contact">
       <div class="container reveal">
-        <div class="kicker">06 · Contact</div>
+        <div class="kicker">07 · Contact</div>
         <h2>좋은 문제는<br><span style="color:#89A3FF">좋은 서비스</span>가 될 수 있습니다.</h2>
         <p>기술, 제품, 서비스에 대한 아이디어가 있다면 함께 구조화하고 만들어보세요.</p>
         <div class="hero-actions">
